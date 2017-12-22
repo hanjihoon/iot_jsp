@@ -28,6 +28,8 @@ public class UserDAOImpl implements UserDAO{
 				hm.put("uiid", rs.getString("uiid"));
 				hm.put("uipwd", rs.getString("uipwd"));
 				hm.put("cino", rs.getString("cino"));
+				hm.put("address", rs.getString("address"));
+				hm.put("uiregdate", rs.getString("uiregdate"));
 				userList.add(hm);
 				
 			}
