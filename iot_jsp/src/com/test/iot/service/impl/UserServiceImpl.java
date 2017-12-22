@@ -1,6 +1,7 @@
 package com.test.iot.service.impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,9 +14,17 @@ public class UserServiceImpl implements UserService{
 	private UserDAO ud = new UserDAOImpl();
 	@Override
 	public ArrayList<HashMap<String, Object>> getUserList() {
-		Connection con = DBCon.getCon();
+		try {
+			Connection con = DBCon.getCon();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		ArrayList<HashMap<String,Object>> userList = ud.selectUserList();
-//		DBCon.closeCon();
+		try {
+			DBCon.closeCon();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return userList;
 	}
 

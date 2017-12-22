@@ -8,9 +8,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class DBCon {
-    private static Connection conn;
-    public static Connection getCon() {
-    	if(DBCon.conn == null) {
+    public static Connection conn;
+    public static Connection getCon() throws SQLException {
+    	if(DBCon.conn == null || DBCon.conn.isClosed()) {
 
     		Context initContext;
     		try {
@@ -24,5 +24,9 @@ public class DBCon {
     	}
     	return DBCon.conn;
     	}
+    
+    public static void closeCon() throws SQLException {
+    	DBCon.conn.close();
+    }
     }
 
