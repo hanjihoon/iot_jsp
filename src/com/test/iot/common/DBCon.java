@@ -1,6 +1,8 @@
 package com.test.iot.common;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.sql.DataSource;
 import javax.naming.Context;
@@ -23,10 +25,11 @@ public class DBCon {
     		}
     	}
     	return DBCon.conn;
-    	}
+    	
     
-    public static void closeCon() throws SQLException {
-    	DBCon.conn.close();
-    }
-    }
+   	}
+    
+   
+}
+    
 

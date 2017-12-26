@@ -1,7 +1,7 @@
 package com.test.iot.servlet;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Scanner;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,9 +40,19 @@ public class UserServlet extends HttpServlet {
 		String cmd = getCommand(uri);
 		if(cmd.equals("list")) {
 			req.setAttribute("list", us.getUserList());
-			us.getUserList();
 		}else if(cmd.equals("view")) {
-			us.getUser();
+			System.out.println("검색할 번호를 입력하세요");
+			Scanner s = new Scanner(System.in);
+			String str = s.nextLine();
+			req.setAttribute("view", us.getUser(s));
+		}else if(cmd.equals("insert")) {
+			us.insertUser();
+		}else if(cmd.equals("delete")) {
+			Scanner s = new Scanner(System.in);
+			us.deleteUser();
+		}else if(cmd.equals("update")) {
+			Scanner s = new Scanner(System.in);
+			us.updateUser();
 		}else {
 			cmd = "/common/error";
 		}
